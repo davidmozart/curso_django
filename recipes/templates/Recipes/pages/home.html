@@ -3,7 +3,12 @@
 {% block content %}
     <div class="main-content container main-content-list">
         {% for recipe in recipes %}
-        {% include "recipes/partials/recipe-items.html" %}
+            {% include "recipes/partials/recipe-items.html" %}
+        {% empty %}
+        <div class="center m-y">
+            <h1>NO RECIPE FOUND HERE!</h1>
+        </div>
         {% endfor %}
+
     </div>
 {% endblock content %}
