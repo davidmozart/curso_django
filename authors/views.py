@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from . forms import RegisterForm
 from django.http import Http404
 from django.contrib import messages
+from django.urls import reverse
 
 
 
@@ -14,6 +15,7 @@ def register_view(request):
 
     return render(request, 'authors/pages/register_view.html',{
         'form': form,
+        'form_action': reverse('authors:create'),
         })
 
 def register_create(request):
@@ -25,7 +27,9 @@ def register_create(request):
     form = RegisterForm(POST) 
 
     if form.is_valid():
-        form.save()
+        user = form.save(commit=False)
+        user.set_password(user.password)
+        user.save()
         messages.success(request, 'Your user is created, please login.')
         del(request.session['register_form_data'])
 
