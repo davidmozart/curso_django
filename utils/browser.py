@@ -1,7 +1,8 @@
 from pathlib import Path
 from selenium import webdriver
 from time import sleep
-from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
+import os
 
 
 
@@ -13,16 +14,8 @@ CHROMEDRIVER_PATH = ROOT_PATH / 'bin' /CHROMEDRIVER_NAME
 
 # print(CHROMEDRIVER_PATH)
 # '--headless' serve para não executar o navegador
-def make_chrome_browser(*options):
-    chrome_options = webdriver.ChromeOptions()
-
-    if options is not None:
-        for option in options:
-            chrome_options.add_argument(option)
-
-
-    chrome_service = Service(executable_path=CHROMEDRIVER_PATH)
-    browser = webdriver.Chrome(service=chrome_service, options=chrome_options)
+def make_chrome_browser():
+    browser = webdriver.Chrome()
     return browser
 
 
