@@ -7,6 +7,10 @@ from utils.pagination import make_pagination
 
 from recipes.models import Recipe
 
+site = {
+    'title': 'Recipes'
+}
+
 PER_PAGE = int(os.environ.get('PER_PAGE', 6))
 
 

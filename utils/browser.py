@@ -1,7 +1,6 @@
 from pathlib import Path
 from selenium import webdriver
 from time import sleep
-from selenium import webdriver
 import os
 
 
